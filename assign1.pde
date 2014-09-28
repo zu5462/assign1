@@ -16,23 +16,31 @@ int totalScore = 0;
 
 void setup() {
   size(640,480);
-  textFont(createFont("fonts/acmesa.ttf", 36));
+  textFont(createFont("fonts/Square_One.ttf", 20));
   machine = new SlotMachine();
 }
 
 void draw() {
-  background(0);
+  background(245,229,124);
+  fill(64,162,171);
+  rect(320,248,396,154,25);
+  fill(253,253,253);
+  rect(220,247,97,114,2);
+  rect(320,247,97,114,2);
+  rect(420,247,97,114,2);
   // draw button
-  fill(127);
+  fill(64,162,171);
+  noStroke();
   rectMode(CENTER);
-  rect(x,y,w,h);
+  rect(x,y,w,h,105);
   // show title
-  textSize(36);
-  fill(255,255,255);
+  fill(64,64,63);
   textAlign(CENTER, CENTER);
-  text("Slot Machine",x,20);
-  text("Score:"+totalScore,x, 60);
-  textSize(30);
+  textSize(32);
+  text("Slot Machine",x,49);
+  textSize(20);
+  text("Score"+" "+":"+" "+totalScore,x, 89);
+  
   // event handler
   if (button) {
     if (!rolling){
@@ -40,11 +48,12 @@ void draw() {
       // start rolling
       // -------------------------------------------------
       // put your code inside here
-
-
+      
+      
       // -------------------------------------------------
     }
     machine.roll();
+    textSize(19);
     text("Stop",x,y);
   
   } else {
@@ -54,16 +63,15 @@ void draw() {
       // -------------------------------------------------
       // put your code inside here
       
-
-
-
-
-
-
+ 
+ 
+ 
       
       // -------------------------------------------------
     }
     machine.stop();
+    fill(253,253,253);
+    textSize(19);
     text("Roll",x,y);
   }
 
