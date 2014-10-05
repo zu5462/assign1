@@ -11,11 +11,7 @@ int h = 50;
 // --------------------------------------------
 // put your code inside here
 int totalScore = 500;
- 
-
-
 // --------------------------------------------
-
 void setup() {
   size(640,480);
   textFont(createFont("fonts/Square_One.ttf", 20));
@@ -42,16 +38,13 @@ void draw() {
   text("Slot Machine",x,49);
   textSize(20);
   text("Score"+" "+":"+" "+totalScore,x, 89);
-  
   // event handler
   if (button) {
     if (!rolling){
       rolling = true;
       // start rolling
       // -------------------------------------------------
-      // put your code inside here
-      
-      
+      // put your code inside here 
        totalScore=totalScore-50; 
       
       // -------------------------------------------------
@@ -81,10 +74,6 @@ void draw() {
       
       totalScore=totalScore+x+y+z;
          
- 
- 
- 
-      
       // -------------------------------------------------
     }
     machine.stop();
