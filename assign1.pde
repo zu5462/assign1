@@ -9,9 +9,7 @@ int h = 50;
 
 // declare variables
 // --------------------------------------------
-// put your code inside here
-int totalScore = 0;
-
+  int totalScore=500;
 // --------------------------------------------
 
 void setup() {
@@ -47,8 +45,7 @@ void draw() {
       rolling = true;
       // start rolling
       // -------------------------------------------------
-      // put your code inside here
-      
+        totalScore-=50;      
       
       // -------------------------------------------------
     }
@@ -61,10 +58,44 @@ void draw() {
       rolling = false;
       // stop rolling
       // -------------------------------------------------
-      // put your code inside here
+      //slot probability
+      int sprobiblity=machine.probability(0.092); // 10%= 0.092+ 1/125 (probabilty of firfruit=secfruit=thrfruit=0 )
+      int firfruit= int(random(6));
+      int secfruit= int(random(6));
+      int thrfruit= int(random(6));
+     
+      if(sprobiblity>0 || ( firfruit==secfruit && secfruit==thrfruit && thrfruit==0))
+      {
+      machine.setSlotFruit(0,0);
+      machine.setSlotFruit(1,0);
+      machine.setSlotFruit(2,0);
+      }
+      else 
+      {
+      //decide fruit
+      machine.setSlotFruit(0,firfruit);
+      machine.setSlotFruit(1,secfruit);
+      machine.setSlotFruit(2,thrfruit);
+      }
+    
+      //get score; seven=s,orange=o,cherry=c,etc..
+      int sscore = machine.getSlotScore(0);
+      int oscore = machine.getSlotScore(1); 
+      int cscore = machine.getSlotScore(2);
+      int lscore = machine.getSlotScore(3);
+      int wscore = machine.getSlotScore(4);
+      int bscore = machine.getSlotScore(5);
+     
+      //get fruit number^2 ;seven=s,orange=o,cherry=c,etc..
+      float snumsq=sq(machine.getFruitCount(0));
+      float onumsq=sq(machine.getFruitCount(1));
+      float cnumsq=sq(machine.getFruitCount(2));
+      float lnumsq=sq(machine.getFruitCount(3));
+      float wnumsq=sq(machine.getFruitCount(4));
+      float bnumsq=sq(machine.getFruitCount(5));
       
- 
- 
+      //get socre
+       totalScore+=int(snumsq*sscore+onumsq*oscore+cnumsq*cscore+lnumsq*lscore+wnumsq*wscore+bnumsq*bscore);
  
       
       // -------------------------------------------------
